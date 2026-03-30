@@ -22,6 +22,7 @@ export default function Home() {
   const [confirmedGuests, setConfirmedGuests] = useState<string[]>([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [error, setError] = useState('');
+  const [duckLevel, setDuckLevel] = useState(0);
   const ITEMS_PER_PAGE = 5;
 
   const backgrounds = [fondo1, fondo2, fondo3, fondo4, fondo5];
@@ -200,44 +201,69 @@ export default function Home() {
       </section>
 
       {/* SECTION 2: Location and Time */}
-      <section className="relative w-full min-h-screen flex flex-col items-center justify-center p-6 bg-repoBlack text-white border-b-4 border-repoAccent overflow-hidden">
+      <section className="relative w-full min-h-screen flex flex-col items-center justify-center py-20 px-4 md:px-8 bg-black text-white border-b-4 border-repoAccent overflow-hidden">
+        
+        {/* Animated Grid Background */}
+        <div className="absolute inset-0 z-0 opacity-30" 
+             style={{ 
+               backgroundImage: `linear-gradient(rgba(255, 170, 0, 0.15) 1px, transparent 1px), linear-gradient(90deg, rgba(255, 170, 0, 0.15) 1px, transparent 1px)`,
+               backgroundSize: '40px 40px',
+               backgroundPosition: 'center center'
+             }}>
+        </div>
+        <div className="absolute inset-0 z-0 bg-gradient-to-b from-black via-transparent to-black pointer-events-none"></div>
 
-        {/* Geometric Background Elements */}
-        <div className="absolute bottom-20 right-10 w-64 h-64 border-4 border-dashed border-repoAccent/10 rotate-45"></div>
+        <div className="z-10 w-full max-w-6xl relative mt-8 md:mt-0">
+          {/* Header */}
+          <div className="mb-12 md:mb-20 flex justify-center">
+            <h3 className="animate-on-scroll opacity-0 translate-y-12 transition-all duration-1000 ease-out text-4xl md:text-5xl lg:text-6xl font-black text-center text-white uppercase tracking-widest drop-shadow-[0_0_15px_rgba(255,170,0,0.5)]">
+              <span className="text-repoAccent relative inline-block">
+                DESTINO
+                <span className="absolute -top-2 -right-6 w-4 h-4 bg-repoAccent shadow-[0_0_10px_#ffaa00] rounded-sm animate-pulse"></span>
+              </span> 
+              <br className="md:hidden" /> DE LA MISIÓN
+            </h3>
+          </div>
 
-        <div className="z-10 w-full max-w-6xl">
-          <h3 className="animate-on-scroll opacity-0 translate-y-12 transition-all duration-1000 ease-out text-4xl md:text-5xl font-black mb-16 text-center text-white uppercase tracking-widest drop-shadow-md">
-            <span className="text-repoAccent">DESTINO</span> DE LA MISIÓN
-          </h3>
-
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-stretch">
+          <div className="flex flex-col lg:flex-row gap-8 lg:gap-12 items-stretch">
 
             {/* Left Box: Time and Address */}
-            <div className="animate-on-scroll opacity-0 -translate-x-12 transition-all duration-1000 ease-out delay-200 flex flex-col justify-center gap-8">
+            <div className="animate-on-scroll opacity-0 -translate-x-12 transition-all duration-1000 ease-out delay-200 flex flex-col justify-center gap-6 lg:w-5/12 w-full">
 
               {/* Hora Card */}
-              <div className="group bg-repoSecondary/40 backdrop-blur-sm p-8 rounded-2xl border-l-[6px] border-repoAccent hover:bg-repoSecondary/60 hover:-translate-y-2 transition-all shadow-[0_10px_30px_rgba(0,0,0,0.4)] flex items-center gap-6">
-                <div className="bg-repoDark p-4 rounded-xl text-repoAccent group-hover:scale-110 transition-transform shadow-inner">
-                  <svg className="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+              <div className="relative group bg-black/60 backdrop-blur-md p-6 md:p-8 rounded-xl border border-repoAccent/30 hover:border-repoAccent hover:shadow-[0_0_30px_rgba(255,170,0,0.4)] transition-all overflow-hidden flex items-center gap-6">
+                {/* Tech corner accents */}
+                <div className="absolute top-0 left-0 w-6 h-6 border-t-2 border-l-2 border-repoAccent opacity-50 group-hover:opacity-100 transition-opacity"></div>
+                <div className="absolute bottom-0 right-0 w-6 h-6 border-b-2 border-r-2 border-repoAccent opacity-50 group-hover:opacity-100 transition-opacity"></div>
+                
+                <div className="bg-repoDark p-4 rounded-xl text-repoAccent shadow-[0_0_15px_rgba(255,170,0,0.2)] group-hover:scale-110 group-hover:bg-repoAccent group-hover:text-black transition-all">
+                  <svg className="w-8 h-8 md:w-10 md:h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
                 </div>
                 <div>
-                  <h4 className="font-bold text-2xl text-repoAccent font-mono mb-1">HORA</h4>
-                  <p className="text-gray-200 text-xl font-bold tracking-wider">16:00 HRS</p>
-                  <p className="text-gray-400 text-sm mt-1 uppercase">10 de Mayo</p>
+                  <h4 className="font-bold text-sm md:text-lg text-repoAccent font-mono mb-1 tracking-widest uppercase opacity-80">Hora de inicio</h4>
+                  <p className="text-white text-3xl md:text-4xl font-black drop-shadow-[0_2px_10px_rgba(255,255,255,0.2)]">16:00 <span className="text-xl">HRS</span></p>
+                  <p className="text-gray-400 text-sm md:text-base mt-1 font-mono tracking-wider">10 DE MAYO</p>
                 </div>
               </div>
 
               {/* Ubicación Card */}
-              <div className="group bg-repoSecondary/40 backdrop-blur-sm p-8 rounded-2xl border-l-[6px] border-repoAccent hover:bg-repoSecondary/60 hover:-translate-y-2 transition-all shadow-[0_10px_30px_rgba(0,0,0,0.4)] flex items-center gap-6">
-                <div className="bg-repoDark p-4 rounded-xl text-repoAccent group-hover:scale-110 transition-transform shadow-inner">
-                  <svg className="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" /><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" /></svg>
+              <div className="relative group bg-black/60 backdrop-blur-md p-6 md:p-8 rounded-xl border border-repoAccent/30 hover:border-repoAccent hover:shadow-[0_0_30px_rgba(255,170,0,0.4)] transition-all overflow-hidden flex items-start gap-6">
+                {/* Tech corner accents */}
+                <div className="absolute top-0 left-0 w-6 h-6 border-t-2 border-l-2 border-repoAccent opacity-50 group-hover:opacity-100 transition-opacity"></div>
+                <div className="absolute bottom-0 right-0 w-6 h-6 border-b-2 border-r-2 border-repoAccent opacity-50 group-hover:opacity-100 transition-opacity"></div>
+                
+                <div className="bg-repoDark p-4 rounded-xl text-repoAccent shadow-[0_0_15px_rgba(255,170,0,0.2)] group-hover:scale-110 group-hover:bg-repoAccent group-hover:text-black transition-all mt-1">
+                  <svg className="w-8 h-8 md:w-10 md:h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" /><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" /></svg>
                 </div>
-                <div>
-                  <h4 className="font-bold text-2xl text-repoAccent font-mono mb-1">UBICACIÓN</h4>
-                  <p className="text-gray-200 text-lg leading-tight mb-3">Los morros pasaje la manta 1717, La Serena</p>
-                  <a href="https://maps.app.goo.gl/XhJg8DZjKVPmV6u99" target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 text-xs font-mono bg-repoAccent text-black px-4 py-2 rounded font-bold hover:bg-yellow-400 transition-colors shadow-md">
-                    <span>VER EN GOOGLE MAPS</span>
-                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" /></svg>
+                <div className="flex-1">
+                  <h4 className="font-bold text-sm md:text-lg text-repoAccent font-mono mb-2 tracking-widest uppercase opacity-80">COORDENADAS</h4>
+                  <p className="text-gray-200 text-base md:text-lg leading-relaxed mb-6 font-bold">
+                    La Manta 1717, Pasaje Los Morros <br/>
+                    <span className="text-gray-500 font-normal">La Serena</span>
+                  </p>
+                  <a href="https://maps.app.goo.gl/XhJg8DZjKVPmV6u99" target="_blank" rel="noreferrer" className="inline-flex w-full justify-center md:w-auto items-center gap-3 text-xs md:text-sm font-mono bg-transparent border-2 border-repoAccent text-repoAccent px-5 py-3 rounded-lg font-bold hover:bg-repoAccent hover:text-black transition-all shadow-[0_0_15px_rgba(255,170,0,0.2)] hover:shadow-[0_0_20px_rgba(255,170,0,0.6)] group-hover:animate-pulse-glow">
+                    <span>FIJAR RUTA EN GPS</span>
+                    <svg className="w-4 h-4 md:w-5 md:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" /></svg>
                   </a>
                 </div>
               </div>
@@ -245,13 +271,24 @@ export default function Home() {
             </div>
 
             {/* Right Box: Map Embed */}
-            <div className="animate-on-scroll opacity-0 translate-x-12 transition-all duration-1000 ease-out delay-500 w-full flex">
-              <div className="w-full relative bg-repoSecondary/30 p-3 rounded-2xl border-2 border-dashed border-repoAccent shadow-[0_0_20px_rgba(255,170,0,0.2)] md:rotate-2 hover:rotate-0 transition-transform duration-500">
-                <div className="absolute -top-4 -right-4 bg-green-500 text-black font-black text-[10px] px-3 py-1 flex items-center gap-2 rounded-full border-2 border-black z-20 font-mono tracking-widest cursor-default shadow-lg">
-                  <span className="w-2 h-2 rounded-full bg-black animate-ping"></span>
-                  RADAR ONLINE
+            <div className="animate-on-scroll opacity-0 translate-x-12 transition-all duration-1000 ease-out delay-500 w-full lg:w-7/12 flex flex-col justify-center">
+              <div className="relative w-full rounded-2xl p-1 bg-gradient-to-br from-repoAccent/80 via-repoDark to-repoAccent/50 shadow-[0_0_40px_rgba(255,170,0,0.15)] group hover:shadow-[0_0_50px_rgba(255,170,0,0.4)] transition-shadow duration-500 mt-8 lg:mt-0">
+                
+                {/* HUD Elements */}
+                <div className="absolute -top-3 md:-top-4 left-1/2 -translate-x-1/2 bg-black px-4 md:px-6 py-1 text-repoAccent font-mono text-xs md:text-sm font-bold border border-repoAccent rounded-full z-20 flex items-center gap-2 shadow-[0_0_10px_rgba(0,0,0,0.8)]">
+                  <span className="w-2 h-2 rounded-full bg-red-500 animate-pulse border border-red-800"></span> REC
                 </div>
-                <div className="w-full h-80 lg:h-full min-h-[350px] rounded-xl overflow-hidden border-2 border-repoDark relative z-10 bg-repoDark/50">
+                
+                <div className="absolute -top-4 -right-2 md:-right-4 bg-repoAccent text-black font-black text-[10px] md:text-xs px-3 md:px-5 py-2 flex items-center gap-2 rounded-tl-xl rounded-br-xl rounded-tr-sm rounded-bl-sm z-20 shadow-[0_5px_15px_rgba(255,170,0,0.5)] transform group-hover:-translate-y-1 transition-transform">
+                  <svg className="w-4 h-4 motion-safe:animate-spin" style={{animationDuration: '3s'}} fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+                  RADAR ACTIVO
+                </div>
+                
+                {/* Visual scanline scanning over map */}
+                <div className="absolute inset-1 hidden md:block z-10 pointer-events-none rounded-xl overflow-hidden before:absolute before:inset-0 before:-translate-y-full group-hover:before:animate-[scan_3s_ease-in-out_infinite] before:bg-gradient-to-b before:from-transparent before:via-repoAccent/30 before:to-transparent"></div>
+
+                <div className="w-full h-[350px] md:h-[450px] lg:h-full min-h-[350px] rounded-xl overflow-hidden bg-[#111] relative z-0 border-2 border-black">
+                  <div className="absolute inset-0 bg-repoAccent/10 pointer-events-none mix-blend-overlay z-10"></div>
                   <iframe
                     src="https://maps.google.com/maps?q=la%20manta%201717%20%2C%20la%20serena&t=&z=15&ie=UTF8&iwloc=&output=embed"
                     width="100%"
@@ -260,7 +297,7 @@ export default function Home() {
                     allowFullScreen={true}
                     loading="lazy"
                     referrerPolicy="no-referrer-when-downgrade"
-                    className="absolute inset-0 grayscale contrast-125 hover:grayscale-0 transition-all duration-700"
+                    className="absolute inset-0 grayscale invert hue-rotate-180 contrast-125 opacity-80 group-hover:grayscale-0 group-hover:invert-0 group-hover:hue-rotate-0 group-hover:contrast-100 group-hover:opacity-100 transition-all duration-1000 ease-in-out"
                     title="Mapa de ubicación"
                   ></iframe>
                 </div>
@@ -269,6 +306,13 @@ export default function Home() {
 
           </div>
         </div>
+        
+        <style dangerouslySetInnerHTML={{__html: `
+          @keyframes scan {
+            0% { transform: translateY(-100%); }
+            100% { transform: translateY(100%); }
+          }
+        `}} />
       </section>
 
       {/* SECTION 3: Contact and Wait message */}
@@ -330,10 +374,41 @@ export default function Home() {
               Por favor, confirma tu asistencia para preparar el loot adecuado para ti. ¡No faltes!
             </p>
 
-            <div className="flex justify-center mb-8">
-              <div className="relative w-24 h-24 rounded-full bg-repoBlack border-2 border-repoAccent flex items-center justify-center overflow-hidden shadow-[0_0_15px_rgba(255,170,0,0.3)] hover:scale-105 transition-transform">
-                <Image src={repotpato} alt="Monito Final" className="object-cover w-full h-full" placeholder="blur" />
+            <div className="flex flex-col items-center mb-8 md:mb-12 mt-4 md:mt-0">
+              <div className="relative group">
+                {/* Visual click feedback and unlocked badge */}
+                {duckLevel > 0 && duckLevel < 10 && (
+                  <div key={duckLevel} className="absolute -top-6 left-1/2 -translate-x-1/2 text-repoAccent font-black text-sm md:text-base animate-[float-up_1s_ease-out_forwards] pointer-events-none drop-shadow-md z-30">
+                    +1 XP
+                  </div>
+                )}
+                {duckLevel >= 10 && (
+                  <div className="absolute -top-8 left-1/2 -translate-x-1/2 min-w-max text-center bg-repoAccent text-black px-3 py-1 rounded-full font-black text-[10px] md:text-xs uppercase animate-bounce z-30 shadow-[0_0_15px_#ffaa00]">
+                    🏆 Pato Dorado! ({duckLevel})
+                  </div>
+                )}
+                
+                <button 
+                  type="button"
+                  onClick={() => {
+                    const sound = new Audio('/repoduck.mp3');
+                    sound.volume = 0.8;
+                    sound.play().catch(e => console.log('Audio fail:', e));
+                    setDuckLevel(prev => prev + 1);
+                  }}
+                  className={`relative w-28 h-28 md:w-36 md:h-36 rounded-full bg-repoBlack border-4 flex items-center justify-center overflow-hidden active:scale-90 transition-transform cursor-pointer focus:outline-none z-20 ${duckLevel >= 10 ? 'border-yellow-400 shadow-[0_0_30px_rgba(255,215,0,0.6)]' : 'border-repoAccent hover:scale-105 shadow-[0_0_15px_rgba(255,170,0,0.3)]'}`}
+                >
+                  <Image src={repotpato} alt="Monito Final" className={`object-cover w-full h-full transition-all duration-300 ${duckLevel >= 10 ? 'brightness-125 sepia-[0.3] hue-rotate-15' : ''}`} placeholder="blur" />
+                </button>
+                
+                {/* Level indicator */}
+                <div className="absolute bottom-0 -right-2 bg-repoDark border-2 border-repoAccent text-repoAccent font-mono text-[10px] md:text-xs font-bold px-2 py-0.5 rounded-full transform rotate-12 shadow-xl z-30 pointer-events-none">
+                  LVL {duckLevel}
+                </div>
               </div>
+              <p className="text-repoAccent/50 text-[10px] font-mono mt-4 md:mt-6 uppercase tracking-widest text-center transition-colors hover:text-repoAccent">
+                [ Toca al pato para ganar XP ]
+              </p>
             </div>
 
             <div className="space-y-4 relative">
@@ -350,6 +425,12 @@ export default function Home() {
         <div className="absolute bottom-5 text-xs text-gray-600 font-mono z-10 w-full text-center">
           GAME OVER / TO BE CONTINUED
         </div>
+        <style dangerouslySetInnerHTML={{__html: `
+          @keyframes float-up {
+            0% { opacity: 1; transform: translate(-50%, 0) scale(1); }
+            100% { opacity: 0; transform: translate(-50%, -30px) scale(1.5); }
+          }
+        `}} />
       </section>
 
       {/* Modal Overlay */}
