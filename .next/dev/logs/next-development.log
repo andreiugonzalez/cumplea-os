@@ -1,50 +1,235 @@
-{"timestamp":"00:00:03.267","source":"Server","level":"LOG","message":""}
-{"timestamp":"00:00:04.075","source":"Browser","level":"INFO","message":"%cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold"}
-{"timestamp":"00:02:48.958","source":"Server","level":"LOG","message":"✓ Compiled in 2.3s"}
-{"timestamp":"00:03:02.143","source":"Browser","level":"INFO","message":"%cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold"}
-{"timestamp":"00:03:22.139","source":"Browser","level":"INFO","message":"%cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold"}
-{"timestamp":"00:05:33.573","source":"Server","level":"LOG","message":"✓ Compiled in 712ms"}
-{"timestamp":"00:05:52.734","source":"Browser","level":"INFO","message":"%cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold"}
-{"timestamp":"00:06:49.777","source":"Server","level":"LOG","message":"✓ Compiled in 44ms"}
-{"timestamp":"00:09:14.416","source":"Server","level":"LOG","message":"✓ Compiled in 39ms"}
-{"timestamp":"00:09:50.180","source":"Browser","level":"INFO","message":"%cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold"}
-{"timestamp":"00:09:50.281","source":"Browser","level":"ERROR","message":"uncaughtError: Error: Hydration failed because the server rendered HTML didn't match the client. As a result this tree will be regenerated on the client. This can happen if a SSR-ed Client Component used:\n\n- A server/client branch `if (typeof window !== 'undefined')`.\n- Variable input such as `Date.now()` or `Math.random()` which changes each time it's called.\n- Date formatting in a user's locale which doesn't match the server.\n- External changing data without sending a snapshot of it along with the HTML.\n- Invalid HTML tag nesting.\n\nIt can also happen if the client has a browser extension installed which messes with the HTML before React loaded.\n\nhttps://react.dev/link/hydration-mismatch\n\n  ...\n    <HTTPAccessFallbackBoundary notFound={{...}} forbidden={undefined} unauthorized={undefined}>\n      <HTTPAccessFallbackErrorBoundary pathname=\"/\" notFound={{...}} forbidden={undefined} unauthorized={undefined} ...>\n        <RedirectBoundary>\n          <RedirectErrorBoundary router={{...}}>\n            <InnerLayoutRouter url=\"/\" tree={[...]} params={{}} cacheNode={{rsc:{...}, ...}} segmentPath={[...]} ...>\n              <SegmentViewNode type=\"page\" pagePath=\"page.tsx\">\n                <SegmentTrieNode>\n                <ClientPageRoot Component={function Home} serverProvidedParams={{...}}>\n                  <Home params={Promise} searchParams={Promise}>\n                    <main className=\"w-full h-f...\">\n                      <section className=\"relative w...\">\n                        <div>\n                        <div>\n                        <div className=\"z-10 relat...\">\n                          <div className=\"w-32 h-32 ...\">\n                            <span className=\"text-repoA...\">\n+                             ESPACIO PNG\n-                             <br>\n                              ...\n                          ...\n                        ...\n                      ...\n              ...\n            ...\n"}
-{"timestamp":"00:09:50.345","source":"Server","level":"ERROR","message":"[browser] \"\\u001b[31mUncaught Error: Hydration failed because the server rendered HTML didn't match the client. As a result this tree will be regenerated on the client. This can happen if a SSR-ed Client Component used:\\n\\n- A server/client branch `if (typeof window !== 'undefined')`.\\n- Variable input such as `Date.now()` or `Math.random()` which changes each time it's called.\\n- Date formatting in a user's locale which doesn't match the server.\\n- External changing data without sending a snapshot of it along with the HTML.\\n- Invalid HTML tag nesting.\\n\\nIt can also happen if the client has a browser extension installed which messes with the HTML before React loaded.\\n\\nhttps://react.dev/link/hydration-mismatch\\n\\n  ...\\n    <HTTPAccessFallbackBoundary notFound={{...}} forbidden={undefined} unauthorized={undefined}>\\n      <HTTPAccessFallbackErrorBoundary pathname=\\\"/\\\" notFound={{...}} forbidden={undefined} unauthorized={undefined} ...>\\n        <RedirectBoundary>\\n          <RedirectErrorBoundary router={{...}}>\\n            <InnerLayoutRouter url=\\\"/\\\" tree={[...]} params={{}} cacheNode={{rsc:{...}, ...}} segmentPath={[...]} ...>\\n              <SegmentViewNode type=\\\"page\\\" pagePath=\\\"page.tsx\\\">\\n                <SegmentTrieNode>\\n                <ClientPageRoot Component={function Home} serverProvidedParams={{...}}>\\n                  <Home params={Promise} searchParams={Promise}>\\n                    <main className=\\\"w-full h-f...\\\">\\n                      <section className=\\\"relative w...\\\">\\n                        <div>\\n                        <div>\\n                        <div className=\\\"z-10 relat...\\\">\\n                          <div className=\\\"w-32 h-32 ...\\\">\\n                            <span className=\\\"text-repoA...\\\">\\n+                             ESPACIO PNG\\n-                             <br>\\n                              ...\\n                          ...\\n                        ...\\n                      ...\\n              ...\\n            ...\\n\\u001b[39m\\n\\u001b[31m    at <unknown> (https://react.dev/link/hydration-mismatch)\\n    at throwOnHydrationMismatch (file://D:/cumpleaños/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:3318:56)\\n    at beginWork (file://D:/cumpleaños/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:6760:752)\\n    at runWithFiberInDEV (file://D:/cumpleaños/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:965:74)\\n    at performUnitOfWork (file://D:/cumpleaños/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:9555:97)\\n    at workLoopConcurrentByScheduler (file://D:/cumpleaños/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:9551:58)\\n    at renderRootConcurrent (file://D:/cumpleaños/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:9534:71)\\n    at performWorkOnRoot (file://D:/cumpleaños/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:9061:150)\\n    at performWorkOnRootViaSchedulerTask (file://D:/cumpleaños/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:10255:9)\\n    at MessagePort.performWorkUntilDeadline (file://D:/cumpleaños/.next/dev/static/chunks/node_modules_next_dist_compiled_0rpq4pf._.js:2647:64)\\n    at span (<anonymous>)\\n    at Home (file://D:/cumpleaños/.next/dev/static/chunks/_01lt_k_._.js:83:245)\\n    at ClientPageRoot (file://D:/cumpleaños/.next/dev/static/chunks/node_modules_next_dist_0tt2wve._.js:4461:50)\\u001b[39m\""}
-{"timestamp":"00:09:50.346","source":"Browser","level":"ERROR","message":"\u001b[31mUncaught Error: Hydration failed because the server rendered HTML didn't match the client. As a result this tree will be regenerated on the client. This can happen if a SSR-ed Client Component used:\n\n- A server/client branch `if (typeof window !== 'undefined')`.\n- Variable input such as `Date.now()` or `Math.random()` which changes each time it's called.\n- Date formatting in a user's locale which doesn't match the server.\n- External changing data without sending a snapshot of it along with the HTML.\n- Invalid HTML tag nesting.\n\nIt can also happen if the client has a browser extension installed which messes with the HTML before React loaded.\n\nhttps://react.dev/link/hydration-mismatch\n\n  ...\n    <HTTPAccessFallbackBoundary notFound={{...}} forbidden={undefined} unauthorized={undefined}>\n      <HTTPAccessFallbackErrorBoundary pathname=\"/\" notFound={{...}} forbidden={undefined} unauthorized={undefined} ...>\n        <RedirectBoundary>\n          <RedirectErrorBoundary router={{...}}>\n            <InnerLayoutRouter url=\"/\" tree={[...]} params={{}} cacheNode={{rsc:{...}, ...}} segmentPath={[...]} ...>\n              <SegmentViewNode type=\"page\" pagePath=\"page.tsx\">\n                <SegmentTrieNode>\n                <ClientPageRoot Component={function Home} serverProvidedParams={{...}}>\n                  <Home params={Promise} searchParams={Promise}>\n                    <main className=\"w-full h-f...\">\n                      <section className=\"relative w...\">\n                        <div>\n                        <div>\n                        <div className=\"z-10 relat...\">\n                          <div className=\"w-32 h-32 ...\">\n                            <span className=\"text-repoA...\">\n+                             ESPACIO PNG\n-                             <br>\n                              ...\n                          ...\n                        ...\n                      ...\n              ...\n            ...\n\u001b[39m\n\u001b[31m    at <unknown> (https://react.dev/link/hydration-mismatch)\n    at throwOnHydrationMismatch (file://D:/cumpleaños/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:3318:56)\n    at beginWork (file://D:/cumpleaños/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:6760:752)\n    at runWithFiberInDEV (file://D:/cumpleaños/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:965:74)\n    at performUnitOfWork (file://D:/cumpleaños/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:9555:97)\n    at workLoopConcurrentByScheduler (file://D:/cumpleaños/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:9551:58)\n    at renderRootConcurrent (file://D:/cumpleaños/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:9534:71)\n    at performWorkOnRoot (file://D:/cumpleaños/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:9061:150)\n    at performWorkOnRootViaSchedulerTask (file://D:/cumpleaños/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js:10255:9)\n    at MessagePort.performWorkUntilDeadline (file://D:/cumpleaños/.next/dev/static/chunks/node_modules_next_dist_compiled_0rpq4pf._.js:2647:64)\n    at span (<anonymous>)\n    at Home (file://D:/cumpleaños/.next/dev/static/chunks/_01lt_k_._.js:83:245)\n    at ClientPageRoot (file://D:/cumpleaños/.next/dev/static/chunks/node_modules_next_dist_0tt2wve._.js:4461:50)\u001b[39m"}
-{"timestamp":"00:13:36.735","source":"Server","level":"LOG","message":"✓ Compiled in 195ms"}
-{"timestamp":"00:17:11.695","source":"Server","level":"LOG","message":"✓ Compiled in 233ms"}
-{"timestamp":"00:17:41.194","source":"Browser","level":"INFO","message":"%cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold"}
-{"timestamp":"00:17:59.453","source":"Browser","level":"INFO","message":"%cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold"}
-{"timestamp":"00:19:23.029","source":"Server","level":"LOG","message":"✓ Compiled in 63ms"}
-{"timestamp":"00:21:57.691","source":"Server","level":"LOG","message":"✓ Compiled in 101ms"}
-{"timestamp":"00:24:04.079","source":"Server","level":"LOG","message":"✓ Compiled in 46ms"}
-{"timestamp":"00:26:42.479","source":"Server","level":"LOG","message":"✓ Compiled in 1802ms"}
-{"timestamp":"00:26:42.512","source":"Server","level":"WARN","message":"⚠ ./src/img/fondorepo1.avif\nAVIF image not supported\nThis version of Turbopack does not support AVIF images, will emit without optimization or encoding\n\nImport trace:\n  Client Component SSR:\n    ./src/img/fondorepo1.avif\n    ./src/app/page.tsx [Client Component SSR]\n    ./src/app/page.tsx [Server Component]\n\n"}
-{"timestamp":"00:26:42.591","source":"Server","level":"WARN","message":"⚠ ./src/img/fondorepo1.avif\nAVIF image not supported\nThis version of Turbopack does not support AVIF images, will emit without optimization or encoding\n\nImport trace:\n  Client Component SSR:\n    ./src/img/fondorepo1.avif\n    ./src/app/page.tsx [Client Component SSR]\n    ./src/app/page.tsx [Server Component]\n\n"}
-{"timestamp":"00:26:42.628","source":"Server","level":"WARN","message":"⚠ ./src/img/fondorepo1.avif\nAVIF image not supported\nThis version of Turbopack does not support AVIF images, will emit without optimization or encoding\n\nImport trace:\n  Client Component SSR:\n    ./src/img/fondorepo1.avif\n    ./src/app/page.tsx [Client Component SSR]\n    ./src/app/page.tsx [Server Component]\n\n"}
-{"timestamp":"00:28:20.113","source":"Server","level":"LOG","message":"✓ Compiled in 44ms"}
-{"timestamp":"00:30:28.749","source":"Server","level":"WARN","message":"⚠ ./src/img/fondorepo1.avif\nAVIF image not supported\nThis version of Turbopack does not support AVIF images, will emit without optimization or encoding\n\nImport trace:\n  Client Component SSR:\n    ./src/img/fondorepo1.avif\n    ./src/app/page.tsx [Client Component SSR]\n    ./src/app/page.tsx [Server Component]\n\n"}
-{"timestamp":"00:30:28.814","source":"Server","level":"LOG","message":"✓ Compiled in 67ms"}
-{"timestamp":"00:30:28.821","source":"Server","level":"WARN","message":"⚠ ./src/img/fondorepo1.avif\nAVIF image not supported\nThis version of Turbopack does not support AVIF images, will emit without optimization or encoding\n\nImport trace:\n  Client Component SSR:\n    ./src/img/fondorepo1.avif\n    ./src/app/page.tsx [Client Component SSR]\n    ./src/app/page.tsx [Server Component]\n\n"}
-{"timestamp":"00:32:52.111","source":"Server","level":"LOG","message":"✓ Compiled in 85ms"}
-{"timestamp":"00:36:05.967","source":"Server","level":"LOG","message":"✓ Compiled in 53ms"}
-{"timestamp":"00:36:17.831","source":"Server","level":"WARN","message":"⚠ ./src/img/fondorepo1.avif\nAVIF image not supported\nThis version of Turbopack does not support AVIF images, will emit without optimization or encoding\n\nImport trace:\n  Client Component SSR:\n    ./src/img/fondorepo1.avif\n    ./src/app/page.tsx [Client Component SSR]\n    ./src/app/page.tsx [Server Component]\n\n"}
-{"timestamp":"00:36:18.119","source":"Server","level":"WARN","message":"⚠ ./src/img/fondorepo1.avif\nAVIF image not supported\nThis version of Turbopack does not support AVIF images, will emit without optimization or encoding\n\nImport trace:\n  Client Component SSR:\n    ./src/img/fondorepo1.avif\n    ./src/app/page.tsx [Client Component SSR]\n    ./src/app/page.tsx [Server Component]\n\n"}
-{"timestamp":"00:36:18.143","source":"Browser","level":"INFO","message":"%cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold"}
-{"timestamp":"00:36:40.571","source":"Server","level":"WARN","message":"⚠ ./src/img/fondorepo1.avif\nAVIF image not supported\nThis version of Turbopack does not support AVIF images, will emit without optimization or encoding\n\nImport trace:\n  Client Component SSR:\n    ./src/img/fondorepo1.avif\n    ./src/app/page.tsx [Client Component SSR]\n    ./src/app/page.tsx [Server Component]\n\n"}
-{"timestamp":"00:36:40.757","source":"Server","level":"WARN","message":"⚠ ./src/img/fondorepo1.avif\nAVIF image not supported\nThis version of Turbopack does not support AVIF images, will emit without optimization or encoding\n\nImport trace:\n  Client Component SSR:\n    ./src/img/fondorepo1.avif\n    ./src/app/page.tsx [Client Component SSR]\n    ./src/app/page.tsx [Server Component]\n\n"}
-{"timestamp":"00:36:40.772","source":"Browser","level":"INFO","message":"%cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold"}
-{"timestamp":"00:36:41.881","source":"Server","level":"WARN","message":"⚠ ./src/img/fondorepo1.avif\nAVIF image not supported\nThis version of Turbopack does not support AVIF images, will emit without optimization or encoding\n\nImport trace:\n  Client Component SSR:\n    ./src/img/fondorepo1.avif\n    ./src/app/page.tsx [Client Component SSR]\n    ./src/app/page.tsx [Server Component]\n\n"}
-{"timestamp":"00:36:42.016","source":"Server","level":"WARN","message":"⚠ ./src/img/fondorepo1.avif\nAVIF image not supported\nThis version of Turbopack does not support AVIF images, will emit without optimization or encoding\n\nImport trace:\n  Client Component SSR:\n    ./src/img/fondorepo1.avif\n    ./src/app/page.tsx [Client Component SSR]\n    ./src/app/page.tsx [Server Component]\n\n"}
-{"timestamp":"00:36:42.027","source":"Browser","level":"INFO","message":"%cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold"}
-{"timestamp":"00:36:42.611","source":"Server","level":"WARN","message":"⚠ ./src/img/fondorepo1.avif\nAVIF image not supported\nThis version of Turbopack does not support AVIF images, will emit without optimization or encoding\n\nImport trace:\n  Client Component SSR:\n    ./src/img/fondorepo1.avif\n    ./src/app/page.tsx [Client Component SSR]\n    ./src/app/page.tsx [Server Component]\n\n"}
-{"timestamp":"00:36:42.748","source":"Server","level":"WARN","message":"⚠ ./src/img/fondorepo1.avif\nAVIF image not supported\nThis version of Turbopack does not support AVIF images, will emit without optimization or encoding\n\nImport trace:\n  Client Component SSR:\n    ./src/img/fondorepo1.avif\n    ./src/app/page.tsx [Client Component SSR]\n    ./src/app/page.tsx [Server Component]\n\n"}
-{"timestamp":"00:36:42.761","source":"Browser","level":"INFO","message":"%cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold"}
-{"timestamp":"00:36:43.347","source":"Server","level":"WARN","message":"⚠ ./src/img/fondorepo1.avif\nAVIF image not supported\nThis version of Turbopack does not support AVIF images, will emit without optimization or encoding\n\nImport trace:\n  Client Component SSR:\n    ./src/img/fondorepo1.avif\n    ./src/app/page.tsx [Client Component SSR]\n    ./src/app/page.tsx [Server Component]\n\n"}
-{"timestamp":"00:36:43.494","source":"Server","level":"WARN","message":"⚠ ./src/img/fondorepo1.avif\nAVIF image not supported\nThis version of Turbopack does not support AVIF images, will emit without optimization or encoding\n\nImport trace:\n  Client Component SSR:\n    ./src/img/fondorepo1.avif\n    ./src/app/page.tsx [Client Component SSR]\n    ./src/app/page.tsx [Server Component]\n\n"}
-{"timestamp":"00:36:43.510","source":"Browser","level":"INFO","message":"%cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold"}
-{"timestamp":"00:39:05.644","source":"Server","level":"LOG","message":"✓ Compiled in 221ms"}
-{"timestamp":"00:39:06.293","source":"Server","level":"LOG","message":"✓ Compiled in 48ms"}
-{"timestamp":"00:39:17.045","source":"Server","level":"WARN","message":"⚠ ./src/img/fondorepo1.avif\nAVIF image not supported\nThis version of Turbopack does not support AVIF images, will emit without optimization or encoding\n\nImport trace:\n  Client Component SSR:\n    ./src/img/fondorepo1.avif\n    ./src/app/page.tsx [Client Component SSR]\n    ./src/app/page.tsx [Server Component]\n\n"}
-{"timestamp":"00:39:17.329","source":"Server","level":"WARN","message":"⚠ ./src/img/fondorepo1.avif\nAVIF image not supported\nThis version of Turbopack does not support AVIF images, will emit without optimization or encoding\n\nImport trace:\n  Client Component SSR:\n    ./src/img/fondorepo1.avif\n    ./src/app/page.tsx [Client Component SSR]\n    ./src/app/page.tsx [Server Component]\n\n"}
-{"timestamp":"00:39:17.353","source":"Browser","level":"INFO","message":"%cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold"}
+{"timestamp":"00:00:02.230","source":"Server","level":"WARN","message":"⚠ Slow filesystem detected. The benchmark took 214ms. If D:\\cumplea-os\\.next/dev is a network drive, consider moving it to a local folder.\nSee more: https://nextjs.org/docs/app/guides/local-development"}
+{"timestamp":"00:00:02.244","source":"Server","level":"LOG","message":""}
+{"timestamp":"00:00:02.285","source":"Server","level":"WARN","message":"⚠ ./src/img/fondorepo1.avif\nAVIF image not supported\nThis version of Turbopack does not support AVIF images, will emit without optimization or encoding\n\nImport trace:\n  Client Component SSR:\n    ./src/img/fondorepo1.avif\n    ./src/app/page.tsx [Client Component SSR]\n    ./src/app/page.tsx [Server Component]\n\n"}
+{"timestamp":"00:00:02.895","source":"Server","level":"WARN","message":"⚠ ./src/img/fondorepo1.avif\nAVIF image not supported\nThis version of Turbopack does not support AVIF images, will emit without optimization or encoding\n\nImport trace:\n  Client Component SSR:\n    ./src/img/fondorepo1.avif\n    ./src/app/page.tsx [Client Component SSR]\n    ./src/app/page.tsx [Server Component]\n\n"}
+{"timestamp":"00:00:02.935","source":"Browser","level":"INFO","message":"%cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold"}
+{"timestamp":"00:00:02.973","source":"Browser","level":"LOG","message":"Esperando interacción para autoplay: {}"}
+{"timestamp":"00:00:06.126","source":"Browser","level":"LOG","message":"Esperando interacción para autoplay: {}"}
+{"timestamp":"00:00:06.129","source":"Browser","level":"LOG","message":"Esperando interacción para autoplay: {}"}
+{"timestamp":"00:00:06.136","source":"Browser","level":"LOG","message":"Esperando interacción para autoplay: {}"}
+{"timestamp":"00:00:06.143","source":"Browser","level":"LOG","message":"Esperando interacción para autoplay: {}"}
+{"timestamp":"00:00:06.151","source":"Browser","level":"LOG","message":"Esperando interacción para autoplay: {}"}
+{"timestamp":"00:00:06.159","source":"Browser","level":"LOG","message":"Esperando interacción para autoplay: {}"}
+{"timestamp":"00:00:06.164","source":"Browser","level":"LOG","message":"Esperando interacción para autoplay: {}"}
+{"timestamp":"00:00:06.173","source":"Browser","level":"LOG","message":"Esperando interacción para autoplay: {}"}
+{"timestamp":"00:00:06.180","source":"Browser","level":"LOG","message":"Esperando interacción para autoplay: {}"}
+{"timestamp":"00:00:06.187","source":"Browser","level":"LOG","message":"Esperando interacción para autoplay: {}"}
+{"timestamp":"00:00:06.194","source":"Browser","level":"LOG","message":"Esperando interacción para autoplay: {}"}
+{"timestamp":"00:00:06.201","source":"Browser","level":"LOG","message":"Esperando interacción para autoplay: {}"}
+{"timestamp":"00:00:06.208","source":"Browser","level":"LOG","message":"Esperando interacción para autoplay: {}"}
+{"timestamp":"00:00:06.216","source":"Browser","level":"LOG","message":"Esperando interacción para autoplay: {}"}
+{"timestamp":"00:00:06.222","source":"Browser","level":"LOG","message":"Esperando interacción para autoplay: {}"}
+{"timestamp":"00:00:06.228","source":"Browser","level":"LOG","message":"Esperando interacción para autoplay: {}"}
+{"timestamp":"00:00:06.235","source":"Browser","level":"LOG","message":"Esperando interacción para autoplay: {}"}
+{"timestamp":"00:00:06.243","source":"Browser","level":"LOG","message":"Esperando interacción para autoplay: {}"}
+{"timestamp":"00:00:06.250","source":"Browser","level":"LOG","message":"Esperando interacción para autoplay: {}"}
+{"timestamp":"00:00:06.256","source":"Browser","level":"LOG","message":"Esperando interacción para autoplay: {}"}
+{"timestamp":"00:00:06.264","source":"Browser","level":"LOG","message":"Esperando interacción para autoplay: {}"}
+{"timestamp":"00:00:06.346","source":"Browser","level":"LOG","message":"Esperando interacción para autoplay: {}"}
+{"timestamp":"00:00:06.354","source":"Browser","level":"LOG","message":"Esperando interacción para autoplay: {}"}
+{"timestamp":"00:00:06.358","source":"Browser","level":"LOG","message":"Esperando interacción para autoplay: {}"}
+{"timestamp":"00:00:06.368","source":"Browser","level":"LOG","message":"Esperando interacción para autoplay: {}"}
+{"timestamp":"00:00:06.372","source":"Browser","level":"LOG","message":"Esperando interacción para autoplay: {}"}
+{"timestamp":"00:00:06.381","source":"Browser","level":"LOG","message":"Esperando interacción para autoplay: {}"}
+{"timestamp":"00:00:06.387","source":"Browser","level":"LOG","message":"Esperando interacción para autoplay: {}"}
+{"timestamp":"00:00:06.395","source":"Browser","level":"LOG","message":"Esperando interacción para autoplay: {}"}
+{"timestamp":"00:00:06.402","source":"Browser","level":"LOG","message":"Esperando interacción para autoplay: {}"}
+{"timestamp":"00:00:06.409","source":"Browser","level":"LOG","message":"Esperando interacción para autoplay: {}"}
+{"timestamp":"00:00:06.416","source":"Browser","level":"LOG","message":"Esperando interacción para autoplay: {}"}
+{"timestamp":"00:00:06.423","source":"Browser","level":"LOG","message":"Esperando interacción para autoplay: {}"}
+{"timestamp":"00:00:06.430","source":"Browser","level":"LOG","message":"Esperando interacción para autoplay: {}"}
+{"timestamp":"00:00:06.437","source":"Browser","level":"LOG","message":"Esperando interacción para autoplay: {}"}
+{"timestamp":"00:00:06.444","source":"Browser","level":"LOG","message":"Esperando interacción para autoplay: {}"}
+{"timestamp":"00:00:06.451","source":"Browser","level":"LOG","message":"Esperando interacción para autoplay: {}"}
+{"timestamp":"00:00:06.457","source":"Browser","level":"LOG","message":"Esperando interacción para autoplay: {}"}
+{"timestamp":"00:00:06.464","source":"Browser","level":"LOG","message":"Esperando interacción para autoplay: {}"}
+{"timestamp":"00:00:06.472","source":"Browser","level":"LOG","message":"Esperando interacción para autoplay: {}"}
+{"timestamp":"00:00:06.478","source":"Browser","level":"LOG","message":"Esperando interacción para autoplay: {}"}
+{"timestamp":"00:00:06.485","source":"Browser","level":"LOG","message":"Esperando interacción para autoplay: {}"}
+{"timestamp":"00:00:06.650","source":"Browser","level":"LOG","message":"Esperando interacción para autoplay: {}"}
+{"timestamp":"00:00:06.656","source":"Browser","level":"LOG","message":"Esperando interacción para autoplay: {}"}
+{"timestamp":"00:00:06.666","source":"Browser","level":"LOG","message":"Esperando interacción para autoplay: {}"}
+{"timestamp":"00:00:06.671","source":"Browser","level":"LOG","message":"Esperando interacción para autoplay: {}"}
+{"timestamp":"00:00:06.680","source":"Browser","level":"LOG","message":"Esperando interacción para autoplay: {}"}
+{"timestamp":"00:00:06.687","source":"Browser","level":"LOG","message":"Esperando interacción para autoplay: {}"}
+{"timestamp":"00:00:06.695","source":"Browser","level":"LOG","message":"Esperando interacción para autoplay: {}"}
+{"timestamp":"00:00:06.698","source":"Browser","level":"LOG","message":"Esperando interacción para autoplay: {}"}
+{"timestamp":"00:00:06.707","source":"Browser","level":"LOG","message":"Esperando interacción para autoplay: {}"}
+{"timestamp":"00:00:06.714","source":"Browser","level":"LOG","message":"Esperando interacción para autoplay: {}"}
+{"timestamp":"00:00:06.722","source":"Browser","level":"LOG","message":"Esperando interacción para autoplay: {}"}
+{"timestamp":"00:00:06.728","source":"Browser","level":"LOG","message":"Esperando interacción para autoplay: {}"}
+{"timestamp":"00:00:06.735","source":"Browser","level":"LOG","message":"Esperando interacción para autoplay: {}"}
+{"timestamp":"00:00:06.742","source":"Browser","level":"LOG","message":"Esperando interacción para autoplay: {}"}
+{"timestamp":"00:00:06.749","source":"Browser","level":"LOG","message":"Esperando interacción para autoplay: {}"}
+{"timestamp":"00:00:06.756","source":"Browser","level":"LOG","message":"Esperando interacción para autoplay: {}"}
+{"timestamp":"00:00:06.764","source":"Browser","level":"LOG","message":"Esperando interacción para autoplay: {}"}
+{"timestamp":"00:00:06.770","source":"Browser","level":"LOG","message":"Esperando interacción para autoplay: {}"}
+{"timestamp":"00:00:06.777","source":"Browser","level":"LOG","message":"Esperando interacción para autoplay: {}"}
+{"timestamp":"00:00:06.784","source":"Browser","level":"LOG","message":"Esperando interacción para autoplay: {}"}
+{"timestamp":"00:00:06.791","source":"Browser","level":"LOG","message":"Esperando interacción para autoplay: {}"}
+{"timestamp":"00:00:06.798","source":"Browser","level":"LOG","message":"Esperando interacción para autoplay: {}"}
+{"timestamp":"00:00:06.804","source":"Browser","level":"LOG","message":"Esperando interacción para autoplay: {}"}
+{"timestamp":"00:00:06.813","source":"Browser","level":"LOG","message":"Esperando interacción para autoplay: {}"}
+{"timestamp":"00:00:06.818","source":"Browser","level":"LOG","message":"Esperando interacción para autoplay: {}"}
+{"timestamp":"00:00:06.823","source":"Browser","level":"LOG","message":"Esperando interacción para autoplay: {}"}
+{"timestamp":"00:00:06.838","source":"Browser","level":"LOG","message":"Esperando interacción para autoplay: {}"}
+{"timestamp":"00:00:06.845","source":"Browser","level":"LOG","message":"Esperando interacción para autoplay: {}"}
+{"timestamp":"00:00:06.851","source":"Browser","level":"LOG","message":"Esperando interacción para autoplay: {}"}
+{"timestamp":"00:00:06.860","source":"Browser","level":"LOG","message":"Esperando interacción para autoplay: {}"}
+{"timestamp":"00:00:06.867","source":"Browser","level":"LOG","message":"Esperando interacción para autoplay: {}"}
+{"timestamp":"00:00:06.874","source":"Browser","level":"LOG","message":"Esperando interacción para autoplay: {}"}
+{"timestamp":"00:00:06.882","source":"Browser","level":"LOG","message":"Esperando interacción para autoplay: {}"}
+{"timestamp":"00:00:06.888","source":"Browser","level":"LOG","message":"Esperando interacción para autoplay: {}"}
+{"timestamp":"00:00:06.895","source":"Browser","level":"LOG","message":"Esperando interacción para autoplay: {}"}
+{"timestamp":"00:00:06.902","source":"Browser","level":"LOG","message":"Esperando interacción para autoplay: {}"}
+{"timestamp":"00:00:06.910","source":"Browser","level":"LOG","message":"Esperando interacción para autoplay: {}"}
+{"timestamp":"00:00:06.916","source":"Browser","level":"LOG","message":"Esperando interacción para autoplay: {}"}
+{"timestamp":"00:00:06.923","source":"Browser","level":"LOG","message":"Esperando interacción para autoplay: {}"}
+{"timestamp":"00:00:06.930","source":"Browser","level":"LOG","message":"Esperando interacción para autoplay: {}"}
+{"timestamp":"00:00:06.936","source":"Browser","level":"LOG","message":"Esperando interacción para autoplay: {}"}
+{"timestamp":"00:00:06.944","source":"Browser","level":"LOG","message":"Esperando interacción para autoplay: {}"}
+{"timestamp":"00:00:06.950","source":"Browser","level":"LOG","message":"Esperando interacción para autoplay: {}"}
+{"timestamp":"00:00:07.069","source":"Browser","level":"LOG","message":"Esperando interacción para autoplay: {}"}
+{"timestamp":"00:00:07.074","source":"Browser","level":"LOG","message":"Esperando interacción para autoplay: {}"}
+{"timestamp":"00:00:07.081","source":"Browser","level":"LOG","message":"Esperando interacción para autoplay: {}"}
+{"timestamp":"00:00:07.090","source":"Browser","level":"LOG","message":"Esperando interacción para autoplay: {}"}
+{"timestamp":"00:00:07.094","source":"Browser","level":"LOG","message":"Esperando interacción para autoplay: {}"}
+{"timestamp":"00:00:07.101","source":"Browser","level":"LOG","message":"Esperando interacción para autoplay: {}"}
+{"timestamp":"00:00:07.112","source":"Browser","level":"LOG","message":"Esperando interacción para autoplay: {}"}
+{"timestamp":"00:00:07.118","source":"Browser","level":"LOG","message":"Esperando interacción para autoplay: {}"}
+{"timestamp":"00:00:07.125","source":"Browser","level":"LOG","message":"Esperando interacción para autoplay: {}"}
+{"timestamp":"00:00:07.131","source":"Browser","level":"LOG","message":"Esperando interacción para autoplay: {}"}
+{"timestamp":"00:00:07.139","source":"Browser","level":"LOG","message":"Esperando interacción para autoplay: {}"}
+{"timestamp":"00:00:07.145","source":"Browser","level":"LOG","message":"Esperando interacción para autoplay: {}"}
+{"timestamp":"00:00:07.152","source":"Browser","level":"LOG","message":"Esperando interacción para autoplay: {}"}
+{"timestamp":"00:00:07.160","source":"Browser","level":"LOG","message":"Esperando interacción para autoplay: {}"}
+{"timestamp":"00:00:07.166","source":"Browser","level":"LOG","message":"Esperando interacción para autoplay: {}"}
+{"timestamp":"00:00:07.174","source":"Browser","level":"LOG","message":"Esperando interacción para autoplay: {}"}
+{"timestamp":"00:00:07.181","source":"Browser","level":"LOG","message":"Esperando interacción para autoplay: {}"}
+{"timestamp":"00:00:07.187","source":"Browser","level":"LOG","message":"Esperando interacción para autoplay: {}"}
+{"timestamp":"00:00:07.195","source":"Browser","level":"LOG","message":"Esperando interacción para autoplay: {}"}
+{"timestamp":"00:00:07.201","source":"Browser","level":"LOG","message":"Esperando interacción para autoplay: {}"}
+{"timestamp":"00:00:07.764","source":"Browser","level":"LOG","message":"Esperando interacción para autoplay: {}"}
+{"timestamp":"00:00:07.770","source":"Browser","level":"LOG","message":"Esperando interacción para autoplay: {}"}
+{"timestamp":"00:00:07.777","source":"Browser","level":"LOG","message":"Esperando interacción para autoplay: {}"}
+{"timestamp":"00:00:07.782","source":"Browser","level":"LOG","message":"Esperando interacción para autoplay: {}"}
+{"timestamp":"00:00:07.791","source":"Browser","level":"LOG","message":"Esperando interacción para autoplay: {}"}
+{"timestamp":"00:00:07.798","source":"Browser","level":"LOG","message":"Esperando interacción para autoplay: {}"}
+{"timestamp":"00:00:07.802","source":"Browser","level":"LOG","message":"Esperando interacción para autoplay: {}"}
+{"timestamp":"00:00:07.812","source":"Browser","level":"LOG","message":"Esperando interacción para autoplay: {}"}
+{"timestamp":"00:00:07.816","source":"Browser","level":"LOG","message":"Esperando interacción para autoplay: {}"}
+{"timestamp":"00:00:07.826","source":"Browser","level":"LOG","message":"Esperando interacción para autoplay: {}"}
+{"timestamp":"00:00:07.830","source":"Browser","level":"LOG","message":"Esperando interacción para autoplay: {}"}
+{"timestamp":"00:00:07.840","source":"Browser","level":"LOG","message":"Esperando interacción para autoplay: {}"}
+{"timestamp":"00:00:07.847","source":"Browser","level":"LOG","message":"Esperando interacción para autoplay: {}"}
+{"timestamp":"00:00:07.851","source":"Browser","level":"LOG","message":"Esperando interacción para autoplay: {}"}
+{"timestamp":"00:00:07.861","source":"Browser","level":"LOG","message":"Esperando interacción para autoplay: {}"}
+{"timestamp":"00:00:07.868","source":"Browser","level":"LOG","message":"Esperando interacción para autoplay: {}"}
+{"timestamp":"00:00:07.873","source":"Browser","level":"LOG","message":"Esperando interacción para autoplay: {}"}
+{"timestamp":"00:00:07.881","source":"Browser","level":"LOG","message":"Esperando interacción para autoplay: {}"}
+{"timestamp":"00:00:07.888","source":"Browser","level":"LOG","message":"Esperando interacción para autoplay: {}"}
+{"timestamp":"00:00:07.895","source":"Browser","level":"LOG","message":"Esperando interacción para autoplay: {}"}
+{"timestamp":"00:00:07.902","source":"Browser","level":"LOG","message":"Esperando interacción para autoplay: {}"}
+{"timestamp":"00:00:07.910","source":"Browser","level":"LOG","message":"Esperando interacción para autoplay: {}"}
+{"timestamp":"00:00:07.916","source":"Browser","level":"LOG","message":"Esperando interacción para autoplay: {}"}
+{"timestamp":"00:00:07.923","source":"Browser","level":"LOG","message":"Esperando interacción para autoplay: {}"}
+{"timestamp":"00:00:07.930","source":"Browser","level":"LOG","message":"Esperando interacción para autoplay: {}"}
+{"timestamp":"00:00:07.937","source":"Browser","level":"LOG","message":"Esperando interacción para autoplay: {}"}
+{"timestamp":"00:00:07.944","source":"Browser","level":"LOG","message":"Esperando interacción para autoplay: {}"}
+{"timestamp":"00:00:07.951","source":"Browser","level":"LOG","message":"Esperando interacción para autoplay: {}"}
+{"timestamp":"00:00:08.955","source":"Browser","level":"LOG","message":"Esperando interacción para autoplay: {}"}
+{"timestamp":"00:00:22.423","source":"Browser","level":"LOG","message":"Esperando interacción para autoplay: {}"}
+{"timestamp":"00:00:22.427","source":"Browser","level":"LOG","message":"Esperando interacción para autoplay: {}"}
+{"timestamp":"00:00:22.436","source":"Browser","level":"LOG","message":"Esperando interacción para autoplay: {}"}
+{"timestamp":"00:00:22.444","source":"Browser","level":"LOG","message":"Esperando interacción para autoplay: {}"}
+{"timestamp":"00:00:22.448","source":"Browser","level":"LOG","message":"Esperando interacción para autoplay: {}"}
+{"timestamp":"00:00:22.458","source":"Browser","level":"LOG","message":"Esperando interacción para autoplay: {}"}
+{"timestamp":"00:00:22.462","source":"Browser","level":"LOG","message":"Esperando interacción para autoplay: {}"}
+{"timestamp":"00:00:22.472","source":"Browser","level":"LOG","message":"Esperando interacción para autoplay: {}"}
+{"timestamp":"00:00:22.479","source":"Browser","level":"LOG","message":"Esperando interacción para autoplay: {}"}
+{"timestamp":"00:00:22.486","source":"Browser","level":"LOG","message":"Esperando interacción para autoplay: {}"}
+{"timestamp":"00:00:22.493","source":"Browser","level":"LOG","message":"Esperando interacción para autoplay: {}"}
+{"timestamp":"00:00:22.499","source":"Browser","level":"LOG","message":"Esperando interacción para autoplay: {}"}
+{"timestamp":"00:00:22.508","source":"Browser","level":"LOG","message":"Esperando interacción para autoplay: {}"}
+{"timestamp":"00:00:22.513","source":"Browser","level":"LOG","message":"Esperando interacción para autoplay: {}"}
+{"timestamp":"00:00:22.520","source":"Browser","level":"LOG","message":"Esperando interacción para autoplay: {}"}
+{"timestamp":"00:00:22.543","source":"Browser","level":"LOG","message":"Esperando interacción para autoplay: {}"}
+{"timestamp":"00:00:22.549","source":"Browser","level":"LOG","message":"Esperando interacción para autoplay: {}"}
+{"timestamp":"00:00:22.555","source":"Browser","level":"LOG","message":"Esperando interacción para autoplay: {}"}
+{"timestamp":"00:00:22.562","source":"Browser","level":"LOG","message":"Esperando interacción para autoplay: {}"}
+{"timestamp":"00:00:22.665","source":"Browser","level":"LOG","message":"Esperando interacción para autoplay: {}"}
+{"timestamp":"00:00:22.670","source":"Browser","level":"LOG","message":"Esperando interacción para autoplay: {}"}
+{"timestamp":"00:00:22.680","source":"Browser","level":"LOG","message":"Esperando interacción para autoplay: {}"}
+{"timestamp":"00:00:22.685","source":"Browser","level":"LOG","message":"Esperando interacción para autoplay: {}"}
+{"timestamp":"00:00:22.694","source":"Browser","level":"LOG","message":"Esperando interacción para autoplay: {}"}
+{"timestamp":"00:00:22.699","source":"Browser","level":"LOG","message":"Esperando interacción para autoplay: {}"}
+{"timestamp":"00:00:22.708","source":"Browser","level":"LOG","message":"Esperando interacción para autoplay: {}"}
+{"timestamp":"00:00:22.716","source":"Browser","level":"LOG","message":"Esperando interacción para autoplay: {}"}
+{"timestamp":"00:00:22.721","source":"Browser","level":"LOG","message":"Esperando interacción para autoplay: {}"}
+{"timestamp":"00:00:22.729","source":"Browser","level":"LOG","message":"Esperando interacción para autoplay: {}"}
+{"timestamp":"00:00:22.735","source":"Browser","level":"LOG","message":"Esperando interacción para autoplay: {}"}
+{"timestamp":"00:00:22.743","source":"Browser","level":"LOG","message":"Esperando interacción para autoplay: {}"}
+{"timestamp":"00:00:22.749","source":"Browser","level":"LOG","message":"Esperando interacción para autoplay: {}"}
+{"timestamp":"00:00:22.757","source":"Browser","level":"LOG","message":"Esperando interacción para autoplay: {}"}
+{"timestamp":"00:00:22.764","source":"Browser","level":"LOG","message":"Esperando interacción para autoplay: {}"}
+{"timestamp":"00:00:22.770","source":"Browser","level":"LOG","message":"Esperando interacción para autoplay: {}"}
+{"timestamp":"00:00:22.777","source":"Browser","level":"LOG","message":"Esperando interacción para autoplay: {}"}
+{"timestamp":"00:00:22.785","source":"Browser","level":"LOG","message":"Esperando interacción para autoplay: {}"}
+{"timestamp":"00:00:22.792","source":"Browser","level":"LOG","message":"Esperando interacción para autoplay: {}"}
+{"timestamp":"00:00:22.798","source":"Browser","level":"LOG","message":"Esperando interacción para autoplay: {}"}
+{"timestamp":"00:00:22.804","source":"Browser","level":"LOG","message":"Esperando interacción para autoplay: {}"}
+{"timestamp":"00:00:25.756","source":"Server","level":"WARN","message":"⚠ ./src/img/fondorepo1.avif\nAVIF image not supported\nThis version of Turbopack does not support AVIF images, will emit without optimization or encoding\n\nImport trace:\n  Client Component SSR:\n    ./src/img/fondorepo1.avif\n    ./src/app/page.tsx [Client Component SSR]\n    ./src/app/page.tsx [Server Component]\n\n"}
+{"timestamp":"00:00:25.917","source":"Server","level":"WARN","message":"⚠ ./src/img/fondorepo1.avif\nAVIF image not supported\nThis version of Turbopack does not support AVIF images, will emit without optimization or encoding\n\nImport trace:\n  Client Component SSR:\n    ./src/img/fondorepo1.avif\n    ./src/app/page.tsx [Client Component SSR]\n    ./src/app/page.tsx [Server Component]\n\n"}
+{"timestamp":"00:00:25.925","source":"Browser","level":"INFO","message":"%cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold"}
+{"timestamp":"00:00:25.978","source":"Browser","level":"LOG","message":"Esperando interacción para autoplay: {}"}
+{"timestamp":"00:00:36.444","source":"Server","level":"WARN","message":"⚠ ./src/img/fondorepo1.avif\nAVIF image not supported\nThis version of Turbopack does not support AVIF images, will emit without optimization or encoding\n\nImport trace:\n  Client Component SSR:\n    ./src/img/fondorepo1.avif\n    ./src/app/page.tsx [Client Component SSR]\n    ./src/app/page.tsx [Server Component]\n\n"}
+{"timestamp":"00:00:36.606","source":"Server","level":"WARN","message":"⚠ ./src/img/fondorepo1.avif\nAVIF image not supported\nThis version of Turbopack does not support AVIF images, will emit without optimization or encoding\n\nImport trace:\n  Client Component SSR:\n    ./src/img/fondorepo1.avif\n    ./src/app/page.tsx [Client Component SSR]\n    ./src/app/page.tsx [Server Component]\n\n"}
+{"timestamp":"00:00:36.620","source":"Browser","level":"INFO","message":"%cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold"}
+{"timestamp":"00:00:36.666","source":"Browser","level":"LOG","message":"Esperando interacción para autoplay: {}"}
+{"timestamp":"00:00:37.892","source":"Browser","level":"LOG","message":"Esperando interacción para autoplay: {}"}
+{"timestamp":"00:00:38.471","source":"Browser","level":"LOG","message":"Esperando interacción para autoplay: {}"}
+{"timestamp":"00:00:38.477","source":"Browser","level":"LOG","message":"Esperando interacción para autoplay: {}"}
+{"timestamp":"00:00:38.485","source":"Browser","level":"LOG","message":"Esperando interacción para autoplay: {}"}
+{"timestamp":"00:00:38.490","source":"Browser","level":"LOG","message":"Esperando interacción para autoplay: {}"}
+{"timestamp":"00:00:38.499","source":"Browser","level":"LOG","message":"Esperando interacción para autoplay: {}"}
+{"timestamp":"00:00:38.504","source":"Browser","level":"LOG","message":"Esperando interacción para autoplay: {}"}
+{"timestamp":"00:00:38.513","source":"Browser","level":"LOG","message":"Esperando interacción para autoplay: {}"}
+{"timestamp":"00:00:38.517","source":"Browser","level":"LOG","message":"Esperando interacción para autoplay: {}"}
+{"timestamp":"00:00:38.528","source":"Browser","level":"LOG","message":"Esperando interacción para autoplay: {}"}
+{"timestamp":"00:00:38.535","source":"Browser","level":"LOG","message":"Esperando interacción para autoplay: {}"}
+{"timestamp":"00:00:38.541","source":"Browser","level":"LOG","message":"Esperando interacción para autoplay: {}"}
+{"timestamp":"00:00:38.548","source":"Browser","level":"LOG","message":"Esperando interacción para autoplay: {}"}
+{"timestamp":"00:00:38.555","source":"Browser","level":"LOG","message":"Esperando interacción para autoplay: {}"}
+{"timestamp":"00:00:38.563","source":"Browser","level":"LOG","message":"Esperando interacción para autoplay: {}"}
+{"timestamp":"00:00:38.568","source":"Browser","level":"LOG","message":"Esperando interacción para autoplay: {}"}
+{"timestamp":"00:00:38.576","source":"Browser","level":"LOG","message":"Esperando interacción para autoplay: {}"}
+{"timestamp":"00:00:38.582","source":"Browser","level":"LOG","message":"Esperando interacción para autoplay: {}"}
+{"timestamp":"00:00:38.590","source":"Browser","level":"LOG","message":"Esperando interacción para autoplay: {}"}
+{"timestamp":"00:00:38.597","source":"Browser","level":"LOG","message":"Esperando interacción para autoplay: {}"}
+{"timestamp":"00:00:38.603","source":"Browser","level":"LOG","message":"Esperando interacción para autoplay: {}"}
+{"timestamp":"00:00:38.610","source":"Browser","level":"LOG","message":"Esperando interacción para autoplay: {}"}
+{"timestamp":"00:00:38.616","source":"Browser","level":"LOG","message":"Esperando interacción para autoplay: {}"}
+{"timestamp":"00:00:38.657","source":"Browser","level":"LOG","message":"Esperando interacción para autoplay: {}"}
+{"timestamp":"00:00:38.665","source":"Browser","level":"LOG","message":"Esperando interacción para autoplay: {}"}
+{"timestamp":"00:00:38.673","source":"Browser","level":"LOG","message":"Esperando interacción para autoplay: {}"}
+{"timestamp":"00:00:38.678","source":"Browser","level":"LOG","message":"Esperando interacción para autoplay: {}"}
+{"timestamp":"00:00:38.687","source":"Browser","level":"LOG","message":"Esperando interacción para autoplay: {}"}
+{"timestamp":"00:00:38.694","source":"Browser","level":"LOG","message":"Esperando interacción para autoplay: {}"}
+{"timestamp":"00:00:38.701","source":"Browser","level":"LOG","message":"Esperando interacción para autoplay: {}"}
+{"timestamp":"00:00:38.706","source":"Browser","level":"LOG","message":"Esperando interacción para autoplay: {}"}
+{"timestamp":"00:00:38.715","source":"Browser","level":"LOG","message":"Esperando interacción para autoplay: {}"}
+{"timestamp":"00:00:38.722","source":"Browser","level":"LOG","message":"Esperando interacción para autoplay: {}"}
+{"timestamp":"00:00:38.729","source":"Browser","level":"LOG","message":"Esperando interacción para autoplay: {}"}
+{"timestamp":"00:00:38.736","source":"Browser","level":"LOG","message":"Esperando interacción para autoplay: {}"}
+{"timestamp":"00:00:38.743","source":"Browser","level":"LOG","message":"Esperando interacción para autoplay: {}"}
+{"timestamp":"00:00:38.749","source":"Browser","level":"LOG","message":"Esperando interacción para autoplay: {}"}
+{"timestamp":"00:00:38.756","source":"Browser","level":"LOG","message":"Esperando interacción para autoplay: {}"}
+{"timestamp":"00:00:38.764","source":"Browser","level":"LOG","message":"Esperando interacción para autoplay: {}"}
+{"timestamp":"00:00:38.769","source":"Browser","level":"LOG","message":"Esperando interacción para autoplay: {}"}
+{"timestamp":"00:00:38.778","source":"Browser","level":"LOG","message":"Esperando interacción para autoplay: {}"}
+{"timestamp":"00:00:38.784","source":"Browser","level":"LOG","message":"Esperando interacción para autoplay: {}"}
+{"timestamp":"00:00:38.791","source":"Browser","level":"LOG","message":"Esperando interacción para autoplay: {}"}
+{"timestamp":"00:00:38.797","source":"Browser","level":"LOG","message":"Esperando interacción para autoplay: {}"}
+{"timestamp":"00:00:38.804","source":"Browser","level":"LOG","message":"Esperando interacción para autoplay: {}"}
+{"timestamp":"00:00:39.082","source":"Browser","level":"LOG","message":"Esperando interacción para autoplay: {}"}
+{"timestamp":"00:01:18.482","source":"Browser","level":"LOG","message":"Esperando interacción para autoplay: {}"}

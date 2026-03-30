@@ -1,9 +1,9 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import Image from 'next/image';
-import repo3 from '../img/repo3.png';
-import repo2 from '../img/repo2.webp';
+import repo4 from '../img/repo4.jpg';
+import repo5 from '../img/repo5.webp';
 import p1Image from '../img/p1.png';
 import fondo1 from '../img/fondorepo1.avif';
 import fondo2 from '../img/fondorepo2.png';
@@ -15,6 +15,8 @@ import repotpato from '../img/repotpato.png';
 export default function Home() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [guestName, setGuestName] = useState('');
+  const [isMuted, setIsMuted] = useState(false);
+  const audioRef = useRef<HTMLAudioElement>(null);
   const [confirmedGuests, setConfirmedGuests] = useState<string[]>([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [error, setError] = useState('');
@@ -57,6 +59,38 @@ export default function Home() {
     return () => observer.disconnect();
   }, []);
 
+  useEffect(() => {
+    const startAudio = () => {
+      if (audioRef.current && audioRef.current.paused) {
+        const playPromise = audioRef.current.play();
+        if (playPromise !== undefined) {
+          playPromise.then(() => {
+            // Remove listeners once audio is successfully playing
+            ['click', 'keydown', 'scroll', 'pointerdown'].forEach(evt => 
+              document.removeEventListener(evt, startAudio)
+            );
+          }).catch(err => {
+            console.log("Esperando interacción para autoplay:", err);
+          });
+        }
+      }
+    };
+
+    // Intentar reproducir directamente
+    startAudio();
+
+    // Si está bloqueado, reproducir con el primer evento de interacción
+    ['click', 'keydown', 'scroll', 'pointerdown'].forEach(evt => 
+      document.addEventListener(evt, startAudio, { passive: true })
+    );
+
+    return () => {
+      ['click', 'keydown', 'scroll', 'pointerdown'].forEach(evt => 
+        document.removeEventListener(evt, startAudio)
+      );
+    };
+  }, []);
+
   const handleConfirm = () => {
     const name = guestName.trim();
     if (name) {
@@ -75,19 +109,40 @@ export default function Home() {
 
   return (
     <main className="w-full h-full overflow-x-hidden border-box relative">
+      <audio ref={audioRef} src="/soundrepo.mp3" loop muted={isMuted} />
+      <button 
+        onClick={() => {
+          const nextMuted = !isMuted;
+          setIsMuted(nextMuted);
+          if (audioRef.current) {
+            audioRef.current.muted = nextMuted;
+            if (!nextMuted) {
+              audioRef.current.play().catch(e => console.log('Audio error:', e));
+            }
+          }
+        }}
+        className="fixed top-4 right-4 z-50 bg-repoSecondary/80 backdrop-blur-sm border-2 border-repoAccent p-3 rounded-full text-repoAccent hover:bg-repoAccent hover:text-black transition-all shadow-[0_0_15px_rgba(255,170,0,0.4)] hover:scale-110"
+        aria-label={isMuted ? "Activar sonido" : "Silenciar sonido"}
+      >
+        {isMuted ? (
+          <svg className="w-6 h-6" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><line x1="23" y1="9" x2="17" y2="15"></line><line x1="17" y1="9" x2="23" y2="15"></line></svg>
+        ) : (
+          <svg className="w-6 h-6" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path><path d="M19.07 4.93a10 10 0 0 1 0 14.14"></path></svg>
+        )}
+      </button>
+
       {/* SECTION 1: Invitation / Hero */}
       <section className="relative w-full min-h-screen flex flex-col items-center justify-center p-6 scanlines border-b-4 border-repoAccent overflow-hidden bg-black">
-        
+
         {/* Carousel Backgrounds */}
         {backgrounds.map((bg, index) => (
-          <Image 
+          <Image
             key={index}
             src={bg}
             alt={`Fondo ${index + 1}`}
             fill
-            className={`object-cover object-center absolute inset-0 z-0 transition-opacity duration-1000 ${
-              index === currentBg ? 'opacity-30' : 'opacity-0'
-            }`}
+            className={`object-cover object-center absolute inset-0 z-0 transition-opacity duration-1000 ${index === currentBg ? 'opacity-30' : 'opacity-0'
+              }`}
             priority={index === 0}
           />
         ))}
@@ -101,8 +156,8 @@ export default function Home() {
         {/* Main Title Area */}
         <div className="animate-on-scroll opacity-0 translate-y-12 transition-all duration-1000 ease-out z-10 text-center mb-8 flex flex-col items-center w-full">
           <h2 className="text-repoAccent tracking-widest font-mono text-xl mb-2 animate-pulse">¡ESTÁS INVITADO!</h2>
-          <h1 className="text-5xl md:text-7xl lg:text-8xl font-black text-white uppercase tracking-tighter shadow-repoAccent leading-tight max-w-5xl mx-auto" 
-              style={{ textShadow: '2px 2px 0px #ffaa00, 4px 4px 0px #0a0a0a' }}>
+          <h1 className="text-5xl md:text-7xl lg:text-8xl font-black text-white uppercase tracking-tighter shadow-repoAccent leading-tight max-w-5xl mx-auto"
+            style={{ textShadow: '2px 2px 0px #ffaa00, 4px 4px 0px #0a0a0a' }}>
             Fiesta de Cumpleaños
           </h1>
           <p className="mt-4 text-gray-300 max-w-xs text-center font-bold">
@@ -113,10 +168,10 @@ export default function Home() {
         {/* Character / Avatar Images (Monitos) */}
         <div className="z-10 relative flex justify-center items-center w-full my-6 gap-4">
           <div className="animate-float relative w-32 h-32 md:w-48 md:h-48 rounded-xl bg-repoSecondary/50 border-2 border-repoAccent flex items-center justify-center overflow-hidden shadow-[0_0_15px_rgba(255,170,0,0.3)] hover:scale-105 transition-transform">
-             <Image src={repo3} alt="Monito 1" className="object-cover w-full h-full" placeholder="blur" />
+            <Image src={repo4} alt="Monito 1" className="object-cover w-full h-full" placeholder="blur" />
           </div>
           <div className="animate-float-delayed relative w-24 h-24 md:w-32 md:h-32 rounded-xl bg-repoSecondary/50 border-2 border-repoAccent flex items-center justify-center overflow-hidden translate-y-4 shadow-[0_0_15px_rgba(255,170,0,0.3)] hover:scale-105 transition-transform">
-             <Image src={repo2} alt="Monito 2" className="object-cover w-full h-full" placeholder="blur" />
+            <Image src={repo5} alt="Monito 2" className="object-cover w-full h-full" placeholder="blur" />
           </div>
         </div>
 
@@ -131,20 +186,20 @@ export default function Home() {
 
       {/* SECTION 2: Location and Time */}
       <section className="relative w-full min-h-screen flex flex-col items-center justify-center p-6 bg-repoBlack text-white border-b-4 border-repoAccent overflow-hidden">
-        
+
         {/* Geometric Background Elements */}
         <div className="absolute bottom-20 right-10 w-64 h-64 border-4 border-dashed border-repoAccent/10 rotate-45"></div>
 
         <div className="z-10 w-full max-w-6xl">
           <h3 className="animate-on-scroll opacity-0 translate-y-12 transition-all duration-1000 ease-out text-4xl md:text-5xl font-black mb-16 text-center text-white uppercase tracking-widest drop-shadow-md">
-             <span className="text-repoAccent">DESTINO</span> DE LA MISIÓN
+            <span className="text-repoAccent">DESTINO</span> DE LA MISIÓN
           </h3>
-          
+
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-stretch">
-            
+
             {/* Left Box: Time and Address */}
             <div className="animate-on-scroll opacity-0 -translate-x-12 transition-all duration-1000 ease-out delay-200 flex flex-col justify-center gap-8">
-              
+
               {/* Hora Card */}
               <div className="group bg-repoSecondary/40 backdrop-blur-sm p-8 rounded-2xl border-l-[6px] border-repoAccent hover:bg-repoSecondary/60 hover:-translate-y-2 transition-all shadow-[0_10px_30px_rgba(0,0,0,0.4)] flex items-center gap-6">
                 <div className="bg-repoDark p-4 rounded-xl text-repoAccent group-hover:scale-110 transition-transform shadow-inner">
@@ -153,7 +208,7 @@ export default function Home() {
                 <div>
                   <h4 className="font-bold text-2xl text-repoAccent font-mono mb-1">HORA</h4>
                   <p className="text-gray-200 text-xl font-bold tracking-wider">16:00 HRS</p>
-                  <p className="text-gray-400 text-sm mt-1 uppercase">6 de Mayo</p>
+                  <p className="text-gray-400 text-sm mt-1 uppercase">10 de Mayo</p>
                 </div>
               </div>
 
@@ -182,13 +237,13 @@ export default function Home() {
                   RADAR ONLINE
                 </div>
                 <div className="w-full h-80 lg:h-full min-h-[350px] rounded-xl overflow-hidden border-2 border-repoDark relative z-10 bg-repoDark/50">
-                  <iframe 
+                  <iframe
                     src="https://maps.google.com/maps?q=la%20manta%201717%20%2C%20la%20serena&t=&z=15&ie=UTF8&iwloc=&output=embed"
-                    width="100%" 
-                    height="100%" 
-                    style={{ border: 0 }} 
-                    allowFullScreen={true} 
-                    loading="lazy" 
+                    width="100%"
+                    height="100%"
+                    style={{ border: 0 }}
+                    allowFullScreen={true}
+                    loading="lazy"
                     referrerPolicy="no-referrer-when-downgrade"
                     className="absolute inset-0 grayscale contrast-125 hover:grayscale-0 transition-all duration-700"
                     title="Mapa de ubicación"
@@ -203,11 +258,11 @@ export default function Home() {
 
       {/* SECTION 3: Contact and Wait message */}
       <section className="relative w-full min-h-screen flex flex-col items-center justify-center p-6 bg-repoDark/95">
-        
+
         <div className="absolute inset-0 z-0 opacity-10" style={{ backgroundImage: 'radial-gradient(circle at 50% 50%, #ffaa00 1px, transparent 1px)', backgroundSize: '40px 40px' }}></div>
-        
+
         <div className="z-10 w-full max-w-5xl flex flex-col md:flex-row items-center md:items-start justify-center gap-12 pt-8">
-          
+
           {/* Left Column: Registered Guests */}
           <div className="animate-on-scroll opacity-0 translate-y-12 transition-all duration-1000 ease-out delay-500 w-full md:w-1/3 bg-repoSecondary/80 backdrop-blur border-2 border-repoAccent p-6 rounded-2xl order-2 md:order-1 shadow-xl relative z-10 text-left">
             <h3 className="text-repoAccent font-mono font-bold text-xl mb-4 border-b border-repoAccent/30 pb-2 flex items-center gap-2 justify-center md:justify-start">
@@ -232,7 +287,7 @@ export default function Home() {
             </div>
             {confirmedGuests.length > ITEMS_PER_PAGE && (
               <div className="flex justify-between items-center mt-4 pt-4 border-t border-repoAccent/30">
-                <button 
+                <button
                   onClick={() => setCurrentPage(p => Math.max(1, p - 1))}
                   disabled={currentPage === 1}
                   className="text-xs bg-gray-800 text-gray-300 px-3 py-1 rounded disabled:opacity-50 hover:bg-gray-700 transition-colors font-mono font-bold border border-gray-600"
@@ -242,7 +297,7 @@ export default function Home() {
                 <span className="text-xs text-repoAccent font-mono">
                   {currentPage} / {Math.ceil(confirmedGuests.length / ITEMS_PER_PAGE)}
                 </span>
-                <button 
+                <button
                   onClick={() => setCurrentPage(p => Math.min(Math.ceil(confirmedGuests.length / ITEMS_PER_PAGE), p + 1))}
                   disabled={currentPage >= Math.ceil(confirmedGuests.length / ITEMS_PER_PAGE)}
                   className="text-xs bg-repoAccent/20 text-repoAccent px-3 py-1 rounded disabled:opacity-50 hover:bg-repoAccent hover:text-black transition-colors font-mono font-bold border border-repoAccent"
@@ -262,12 +317,12 @@ export default function Home() {
 
             <div className="flex justify-center mb-8">
               <div className="relative w-24 h-24 rounded-full bg-repoBlack border-2 border-repoAccent flex items-center justify-center overflow-hidden shadow-[0_0_15px_rgba(255,170,0,0.3)] hover:scale-105 transition-transform">
-                 <Image src={repotpato} alt="Monito Final" className="object-cover w-full h-full" placeholder="blur" />
+                <Image src={repotpato} alt="Monito Final" className="object-cover w-full h-full" placeholder="blur" />
               </div>
             </div>
 
             <div className="space-y-4 relative">
-              <button 
+              <button
                 onClick={() => setIsModalOpen(true)}
                 className="animate-pulse-glow block w-full py-4 bg-transparent border-2 border-repoAccent text-repoAccent font-bold font-mono rounded-xl hover:bg-repoAccent hover:text-black transition-all"
               >
@@ -290,8 +345,8 @@ export default function Home() {
               <span className="text-repoAccent">▶</span> INGRESA TU NOMBRE
             </h3>
             <p className="text-gray-400 text-sm mb-6">Confirma tu asistencia usando tu nombre para sumarte al lobby.</p>
-            <input 
-              type="text" 
+            <input
+              type="text"
               value={guestName}
               onChange={(e) => { setGuestName(e.target.value); setError(''); }}
               placeholder="Player 1..."
@@ -305,13 +360,13 @@ export default function Home() {
               </div>
             )}
             <div className="flex gap-4">
-              <button 
+              <button
                 onClick={() => setIsModalOpen(false)}
                 className="flex-1 py-3 text-gray-300 bg-transparent border-2 border-gray-600 rounded-xl font-bold font-mono hover:bg-gray-800 transition-colors"
               >
                 CANCELAR
               </button>
-              <button 
+              <button
                 onClick={handleConfirm}
                 className="flex-1 py-3 bg-repoAccent text-black border-2 border-repoAccent rounded-xl font-bold font-mono hover:bg-yellow-400 transition-colors"
               >
@@ -321,7 +376,7 @@ export default function Home() {
           </div>
         </div>
       )}
-      
+
     </main>
   );
 }
