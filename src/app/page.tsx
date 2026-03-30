@@ -2,6 +2,8 @@
 
 import React, { useState, useEffect, useRef } from 'react';
 import Image from 'next/image';
+import { collection, addDoc, onSnapshot, query, orderBy, serverTimestamp } from 'firebase/firestore';
+import { db } from '../firebase/config';
 import repo4 from '../img/repo4.jpg';
 import repo5 from '../img/repo5.webp';
 import p1Image from '../img/p1.png';
@@ -33,14 +35,16 @@ export default function Home() {
   }, []);
 
   useEffect(() => {
-    const stored = localStorage.getItem('partyGuests');
-    if (stored) {
-      try {
-        setConfirmedGuests(JSON.parse(stored));
-      } catch (e) {
-        // ignore
-      }
-    }
+    const q = query(collection(db, 'guests'), orderBy('timestamp', 'asc'));
+    const unsubscribe = onSnapshot(q, (querySnapshot) => {
+      const guestsData: string[] = [];
+      querySnapshot.forEach((doc) => {
+        if (doc.data().name) {
+          guestsData.push(doc.data().name);
+        }
+      });
+      setConfirmedGuests(guestsData);
+    });
 
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
@@ -56,7 +60,10 @@ export default function Home() {
       observer.observe(el);
     });
 
-    return () => observer.disconnect();
+    return () => {
+      observer.disconnect();
+      unsubscribe();
+    };
   }, []);
 
   useEffect(() => {
@@ -91,19 +98,27 @@ export default function Home() {
     };
   }, []);
 
-  const handleConfirm = () => {
+  const handleConfirm = async () => {
     const name = guestName.trim();
     if (name) {
       if (confirmedGuests.some(g => g.toLowerCase() === name.toLowerCase())) {
         setError('Nombre ya existente');
         return;
       }
-      const updated = [...confirmedGuests, name];
-      setConfirmedGuests(updated);
-      localStorage.setItem('partyGuests', JSON.stringify(updated));
-      setGuestName('');
-      setError('');
-      setIsModalOpen(false);
+      
+      try {
+        await addDoc(collection(db, 'guests'), {
+          name: name,
+          timestamp: serverTimestamp()
+        });
+        
+        setGuestName('');
+        setError('');
+        setIsModalOpen(false);
+      } catch (err) {
+        console.error("Error saving guest:", err);
+        setError('Error al registrarse. ¿Quizás falta abrir los permisos en Firebase?');
+      }
     }
   };
 
