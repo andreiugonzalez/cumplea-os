@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect, useRef } from 'react';
 import Image from 'next/image';
-import { collection, addDoc, onSnapshot, query, orderBy, serverTimestamp } from 'firebase/firestore';
+import { collection, addDoc, onSnapshot, query, orderBy, serverTimestamp, updateDoc, doc } from 'firebase/firestore';
 import { db } from '../firebase/config';
 import repo4 from '../img/repo4.jpg';
 import repo5 from '../img/repo5.webp';
@@ -19,12 +19,33 @@ export default function Home() {
   const [guestName, setGuestName] = useState('');
   const [isMuted, setIsMuted] = useState(false);
   const audioRef = useRef<HTMLAudioElement>(null);
-  const [confirmedGuests, setConfirmedGuests] = useState<string[]>([]);
+  interface GuestData {
+    id: string;
+    name: string;
+    duckLevel: number;
+    timestamp?: any;
+  }
+
+  const [confirmedGuests, setConfirmedGuests] = useState<GuestData[]>([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [error, setError] = useState('');
   const [duckLevel, setDuckLevel] = useState(0);
+  const [guestId, setGuestId] = useState<string | null>(null);
+  const [isDuckLevelInitialized, setIsDuckLevelInitialized] = useState(false);
   const ITEMS_PER_PAGE = 5;
 
+  const getDuckRank = (level: number) => {
+    if (level >= 300) return { name: 'Corona de Caca', icon: '💩', borderColor: 'border-[#8B4513]', shadowColor: 'shadow-[0_0_40px_rgba(139,69,19,0.8)]' };
+    if (level >= 200) return { name: 'Corona de Amatista', icon: '🔮', borderColor: 'border-purple-500', shadowColor: 'shadow-[0_0_35px_rgba(168,85,247,0.8)]' };
+    if (level >= 150) return { name: 'Corona de Zafiro', icon: '🔵', borderColor: 'border-blue-500', shadowColor: 'shadow-[0_0_35px_rgba(59,130,246,0.8)]' };
+    if (level >= 80) return { name: 'Corona de Diamante', icon: '💎', borderColor: 'border-cyan-400', shadowColor: 'shadow-[0_0_30px_rgba(34,211,238,0.8)]' };
+    if (level >= 40) return { name: 'Corona de Ruby', icon: '🔴', borderColor: 'border-red-500', shadowColor: 'shadow-[0_0_30px_rgba(239,68,68,0.8)]' };
+    if (level >= 20) return { name: 'Corona de Esmeralda', icon: '❇️', borderColor: 'border-green-500', shadowColor: 'shadow-[0_0_25px_rgba(34,197,94,0.8)]' };
+    if (level >= 10) return { name: 'Corona de Oro', icon: '👑', borderColor: 'border-yellow-400', shadowColor: 'shadow-[0_0_25px_rgba(250,204,21,0.8)]' };
+    return { name: 'Pato Normal', icon: '', borderColor: 'border-repoAccent', shadowColor: 'shadow-[0_0_15px_rgba(255,170,0,0.3)]' };
+  };
+
+  const currentRank = getDuckRank(duckLevel);
   const backgrounds = [fondo1, fondo2, fondo3, fondo4, fondo5];
   const [currentBg, setCurrentBg] = useState(0);
 
@@ -38,12 +59,19 @@ export default function Home() {
   useEffect(() => {
     const q = query(collection(db, 'guests'), orderBy('timestamp', 'asc'));
     const unsubscribe = onSnapshot(q, (querySnapshot) => {
-      const guestsData: string[] = [];
+      const guestsData: GuestData[] = [];
       querySnapshot.forEach((doc) => {
         if (doc.data().name) {
-          guestsData.push(doc.data().name);
+          guestsData.push({
+            id: doc.id,
+            name: doc.data().name,
+            duckLevel: doc.data().duckLevel || 0,
+            timestamp: doc.data().timestamp
+          });
         }
       });
+      // Sort by duckLevel descending for leaderboard
+      guestsData.sort((a, b) => b.duckLevel - a.duckLevel);
       setConfirmedGuests(guestsData);
     });
 
@@ -66,6 +94,46 @@ export default function Home() {
       unsubscribe();
     };
   }, []);
+
+  // Restore session
+  useEffect(() => {
+    const savedId = localStorage.getItem('party_guest_id');
+    if (savedId) {
+      setGuestId(savedId);
+    }
+  }, []);
+
+  // Initialize duck level on load
+  useEffect(() => {
+    if (guestId && confirmedGuests.length > 0 && !isDuckLevelInitialized) {
+      const me = confirmedGuests.find(g => g.id === guestId);
+      if (me) {
+        setDuckLevel(me.duckLevel || 0);
+        setIsDuckLevelInitialized(true);
+      } else {
+        // If guestId is not found (deleted from DB), remove from localStorage
+        localStorage.removeItem('party_guest_id');
+        setGuestId(null);
+      }
+    }
+  }, [guestId, confirmedGuests, isDuckLevelInitialized]);
+
+  // Debounced Firebase save for duckLevel
+  useEffect(() => {
+    if (!guestId || !isDuckLevelInitialized) return;
+
+    const timeoutId = setTimeout(async () => {
+      try {
+        await updateDoc(doc(db, 'guests', guestId), {
+          duckLevel: duckLevel
+        });
+      } catch (err) {
+        console.error("Error updating duck level", err);
+      }
+    }, 1000);
+
+    return () => clearTimeout(timeoutId);
+  }, [duckLevel, guestId, isDuckLevelInitialized]);
 
   useEffect(() => {
     const startAudio = () => {
@@ -102,16 +170,21 @@ export default function Home() {
   const handleConfirm = async () => {
     const name = guestName.trim();
     if (name) {
-      if (confirmedGuests.some(g => g.toLowerCase() === name.toLowerCase())) {
+      if (confirmedGuests.some(g => g.name.toLowerCase() === name.toLowerCase())) {
         setError('Nombre ya existente');
         return;
       }
 
       try {
-        await addDoc(collection(db, 'guests'), {
+        const docRef = await addDoc(collection(db, 'guests'), {
           name: name,
-          timestamp: serverTimestamp()
+          timestamp: serverTimestamp(),
+          duckLevel: duckLevel
         });
+
+        localStorage.setItem('party_guest_id', docRef.id);
+        setGuestId(docRef.id);
+        setIsDuckLevelInitialized(true);
 
         setGuestName('');
         setError('');
@@ -334,14 +407,23 @@ export default function Home() {
                 {confirmedGuests.length === 0 ? (
                   <li className="text-gray-500 text-sm text-center py-4 italic">No hay jugadores en la partida.</li>
                 ) : (
-                  confirmedGuests.slice((currentPage - 1) * ITEMS_PER_PAGE, currentPage * ITEMS_PER_PAGE).map((guest, idx) => (
-                    <li key={(currentPage - 1) * ITEMS_PER_PAGE + idx} className="flex items-center gap-3 bg-repoDark/50 p-2 rounded border border-gray-700 text-sm animate-item-enter">
-                      <div className="w-8 h-8 shrink-0 relative overflow-hidden rounded bg-gray-800 border-2 border-repoAccent flex items-center justify-center">
-                        <Image src={p1Image} alt="Player Icon" className="object-cover w-full h-full" placeholder="blur" />
-                      </div>
-                      <span className="truncate">{guest}</span>
-                    </li>
-                  ))
+                  confirmedGuests.slice((currentPage - 1) * ITEMS_PER_PAGE, currentPage * ITEMS_PER_PAGE).map((guest, idx) => {
+                    const rank = getDuckRank(guest.duckLevel || 0);
+                    return (
+                      <li key={guest.id} className="flex items-center justify-between bg-repoDark/50 p-2 rounded border border-gray-700 text-sm animate-item-enter hover:border-repoAccent/50 transition-colors">
+                        <div className="flex items-center gap-3">
+                          <div className={`w-8 h-8 shrink-0 relative overflow-hidden rounded bg-gray-800 border-2 ${rank.borderColor} flex items-center justify-center text-sm shadow-sm`}>
+                            {rank.icon ? <span>{rank.icon}</span> : <Image src={p1Image} alt="Player Icon" className="object-cover w-full h-full opacity-50" placeholder="blur" />}
+                          </div>
+                          <span className="truncate max-w-[120px] font-bold text-gray-200">{guest.name}</span>
+                        </div>
+                        <div className="flex flex-col items-end">
+                          <span className="text-repoAccent font-black text-xs">LVL {guest.duckLevel || 0}</span>
+                          <span className="text-[9px] text-gray-500 uppercase">{rank.name}</span>
+                        </div>
+                      </li>
+                    );
+                  })
                 )}
               </ul>
             </div>
@@ -384,8 +466,8 @@ export default function Home() {
                   </div>
                 )}
                 {duckLevel >= 10 && (
-                  <div className="absolute -top-8 left-1/2 -translate-x-1/2 min-w-max text-center bg-repoAccent text-black px-3 py-1 rounded-full font-black text-[10px] md:text-xs uppercase animate-bounce z-30 shadow-[0_0_15px_#ffaa00]">
-                    🏆 Pato Dorado! ({duckLevel})
+                  <div className={`absolute -top-8 left-1/2 -translate-x-1/2 min-w-max text-center bg-black border ${currentRank.borderColor} text-white px-3 py-1 rounded-full font-black text-[10px] md:text-xs uppercase animate-bounce z-30 ${currentRank.shadowColor}`}>
+                    {currentRank.icon} {currentRank.name}!
                   </div>
                 )}
 
@@ -397,9 +479,9 @@ export default function Home() {
                     sound.play().catch(e => console.log('Audio fail:', e));
                     setDuckLevel(prev => prev + 1);
                   }}
-                  className={`relative w-28 h-28 md:w-36 md:h-36 rounded-full bg-repoBlack border-4 flex items-center justify-center overflow-hidden active:scale-90 transition-transform cursor-pointer focus:outline-none z-20 ${duckLevel >= 10 ? 'border-yellow-400 shadow-[0_0_30px_rgba(255,215,0,0.6)]' : 'border-repoAccent hover:scale-105 shadow-[0_0_15px_rgba(255,170,0,0.3)]'}`}
+                  className={`relative w-28 h-28 md:w-36 md:h-36 rounded-full bg-repoBlack border-4 flex items-center justify-center overflow-hidden active:scale-90 transition-transform cursor-pointer focus:outline-none z-20 ${currentRank.borderColor} ${currentRank.shadowColor} hover:scale-105`}
                 >
-                  <Image src={repotpato} alt="Monito Final" className={`object-cover w-full h-full transition-all duration-300 ${duckLevel >= 10 ? 'brightness-125 sepia-[0.3] hue-rotate-15' : ''}`} placeholder="blur" />
+                  <Image src={repotpato} alt="Monito Final" className={`object-cover w-full h-full transition-all duration-300 ${duckLevel >= 10 ? 'brightness-110' : ''}`} placeholder="blur" />
                 </button>
 
                 {/* Level indicator */}
@@ -412,14 +494,21 @@ export default function Home() {
               </p>
             </div>
 
-            <div className="space-y-4 relative">
-              <button
-                onClick={() => setIsModalOpen(true)}
-                className="animate-pulse-glow block w-full py-4 bg-transparent border-2 border-repoAccent text-repoAccent font-bold font-mono rounded-xl hover:bg-repoAccent hover:text-black transition-all"
-              >
-                CONFIRMAR ASISTENCIA
-              </button>
-            </div>
+            {!guestId && (
+              <div className="space-y-4 relative mt-6">
+                <button
+                  onClick={() => setIsModalOpen(true)}
+                  className="animate-pulse-glow block w-full py-4 bg-transparent border-2 border-repoAccent text-repoAccent font-bold font-mono rounded-xl hover:bg-repoAccent hover:text-black transition-all"
+                >
+                  CONFIRMAR ASISTENCIA
+                </button>
+              </div>
+            )}
+            {guestId && (
+              <div className="mt-6 text-center text-repoAccent font-mono text-sm border border-repoAccent/30 bg-repoAccent/10 p-3 rounded-xl inline-block shadow-[0_0_15px_rgba(255,170,0,0.1)]">
+                ✓ ASISTENCIA CONFIRMADA. ¡A GRINDEAR!
+              </div>
+            )}
           </div>
         </div>
 
