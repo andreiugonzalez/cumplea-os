@@ -241,8 +241,8 @@ export default function Home() {
                 </div>
                 <div>
                   <h4 className="font-bold text-sm md:text-lg text-repoAccent font-mono mb-1 tracking-widest uppercase opacity-80">Hora de inicio</h4>
-                  <p className="text-white text-3xl md:text-4xl font-black drop-shadow-[0_2px_10px_rgba(255,255,255,0.2)]">16:00 <span className="text-xl">HRS</span></p>
-                  <p className="text-gray-400 text-sm md:text-base mt-1 font-mono tracking-wider">9 DE MAYO</p>
+                  <p className="text-white text-3xl md:text-4xl font-black drop-shadow-[0_2px_10px_rgba(255,255,255,0.2)]">16:30 <span className="text-xl">HRS</span></p>
+                  <p className="text-gray-400 text-sm md:text-base mt-1 font-mono tracking-wider">08 DE MAYO</p>
                 </div>
               </div>
 
